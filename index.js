@@ -7,9 +7,29 @@ const ObjectId = require("mongodb").ObjectId;
 const { MongoClient } = require("mongodb");
 
 const port = process.env.PORT || 5000;
-
-app.use(cors());
+const corsOptions = {
+  origin: '*',
+  credentials: true,
+  optionSuccessStatus: 200,
+}
+app.use(cors(corsOptions))
 app.use(express.json());
+
+// app.use(cors());
+// const allowedOrigins = [
+//   "http://localhost:3000",
+//   // "https://elp-client.vercel.app",
+//   // Add other allowed origins as needed
+// ];
+
+// app.use(
+//   cors({
+//     origin: allowedOrigins.includes("*") ? "*" : allowedOrigins,
+//     credentials: true,
+//   })
+// );
+// app.use(cookieParser());
+// app.use(express.json());
 
 // const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.jy11d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const uri =
